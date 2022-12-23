@@ -31,12 +31,13 @@
 					var json_response = response.json();
 					oauthToken = json_response.access_token;
 				});
-				$("#infoTable").hide();
-				$("#passwordTable").show();
-				$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
-				$("#oauthtoken").val('Token: '+ oauthToken);
-				$("#clientid").val('Client ID:' + bungie_client_id);
 			}
+					  
+			$("#infoTable").hide();
+			$("#passwordTable").show();
+			$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
+			$("#oauthtoken").val('Token: '+ oauthToken);
+			$("#clientid").val('Client ID:' + bungie_client_id);
 		});
 	</script>
         <style>
