@@ -17,10 +17,10 @@
 		    method: 'POST',
 		    headers: {
 		      'Content-Type': 'application/x-www-form-urlencoded',
-		      'Authorization': `Basic ${base64encoded(bungie_client_id:bungie_client_secret)}`
+		      'Authorization': `Basic ${window.btoa(`${bungie_client_id}:${bungie_client_secret}`)}`
 		    },
 		    body: new URLSearchParams({
-		      'client_id': "{my-client-id}",
+		      'client_id': bungie_client_id,
 		      'grant_type': "authorization_code",
 		      'code': oauthCode
 		    }).toString()
