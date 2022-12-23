@@ -29,7 +29,8 @@
 				.then(function(response) {
 					console.log(response);
 					var json_response = response.json();
-					oauthToken = json_response.access_token;
+					console.log(json_response);
+					oauthToken = json_response["access_token"];
 				});
 			});
 
