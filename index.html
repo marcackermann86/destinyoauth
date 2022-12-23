@@ -7,15 +7,16 @@
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" language="javascript">
             $(document).ready(function() {
-                var oauthCode = location.search;
-                var accessToken = oauthCode.substr(oauthCode.indexOf('code=')).split('&')[0].split('=')[1];
+                var oauthCode_URL = location.search;
+                var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('&')[0].split('=')[1];
+		var oauthToken = "";
 
-                if (accessToken) {
+                if (oauthCode) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
-		    $("#oauthpass").val('/set irc.server.twitch.password \"oauth:' + encodeURIComponent(accessToken) + '\"');
-	            $("#oauthtoken").val('/set plugins.var.python.twitch.token '+ encodeURIComponent(accessToken));
-                    $("#clientid").val('/set plugins.var.python.twitch.client_id awtv6n371jb7uayyc4jaljochyjbfxs');
+		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
+	            $("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
+                    $("#clientid").val('Client ID: 42433');
                 }
             });
         </script>
