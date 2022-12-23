@@ -7,16 +7,34 @@
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" language="javascript">
             $(document).ready(function() {
+		var bungie_client_id = '42433';
+		var bungie_client_secret = 'JZh.6-1MaO5C-gs3wEMpE4Stj5zWCm8EOgJgbOagUzk';
                 var oauthCode_URL = location.search;
                 var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
 		var oauthToken = "";
-
+		
+		fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
+		    method: 'POST',
+		    headers: {
+		      'Content-Type': 'application/x-www-form-urlencoded',
+		      'Authorization': `Basic ${base64encoded(bungie_client_id:bungie_client_secret)}`
+		    },
+		    body: new URLSearchParams({
+		      'client_id': "{my-client-id}",
+		      'grant_type': "authorization_code",
+		      'code': oauthCode
+		    }).toString()
+		  }).then(function(response) {
+		    console.log(response);
+		    return response.json();
+		  });
+		    
                 if (oauthCode) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
 		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
 	            $("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
-                    $("#clientid").val('Client ID: 42433');
+                    $("#clientid").val('Client ID:' + bungie_client_id);
                 }
             });
         </script>
