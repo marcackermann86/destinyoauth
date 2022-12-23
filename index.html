@@ -24,17 +24,15 @@
 		      'grant_type': "authorization_code",
 		      'code': oauthCode
 		    }).toString()
-		  }).then(function(response) {
-		    console.log(response);
-		    oauthToken = response.json().access_token;
-		    return response.json();
-		  });
+		  })
+		 .then((response) => response.json())
+  		 .then(oauthToken => response.access_token);
 		    
                 if (oauthCode) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
 		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
-	            $("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
+	            $("#oauthtoken").val('Token: '+ oauthToken);
                     $("#clientid").val('Client ID:' + bungie_client_id);
                 }
             });
