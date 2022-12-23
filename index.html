@@ -8,15 +8,15 @@
         <script type="text/javascript" language="javascript">
             $(document).ready(function() {
                 var oauthCode_URL = location.search;
-                var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('&')[0].split('=')[1];
+                var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
 		var oauthToken = "";
 
                 if (oauthCode) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
-		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
-	            $("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
-                    $("#clientid").val('Client ID: 42433');
+		    $("#oauthcode_lbl").val('Code: '+ encodeURIComponent(oauthCode));
+	            $("#oauthtoken_lbl").val('Token: '+ encodeURIComponent(oauthToken));
+                    $("#clientid_lbl").val('Client ID: 42433');
                 }
             });
         </script>
