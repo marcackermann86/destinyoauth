@@ -5,41 +5,40 @@
         <link href="//twitchapps.com/bootstrap/css/cosmo.css" rel="stylesheet" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" language="javascript">
-            $(document).ready(function() {
-		var bungie_client_id = '42433';
-		var bungie_client_secret = 'JZh.6-1MaO5C-gs3wEMpE4Stj5zWCm8EOgJgbOagUzk';
-                var oauthCode_URL = location.search;
-                var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
-		var oauthToken = "";
-		
-		fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
-		    method: 'POST',
-		    headers: {
-		      'Content-Type': 'application/x-www-form-urlencoded',
-		      'Authorization': `Basic ${window.btoa(`${bungie_client_id}:${bungie_client_secret}`)}`
-		    },
-		    body: new URLSearchParams({
-		      'client_id': bungie_client_id,
-		      'grant_type': "authorization_code",
-		      'code': oauthCode
-		    }).toString()
-		  })
-		 .then(function(response) {
-    			console.log(response);
-    			var json_response = response.json();
-			oauthToken = json_response.access_token;
-  		});
-		    
-                if (oauthCode) {
-                    $("#infoTable").hide();
-                    $("#passwordTable").show();
-		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
-	            $("#oauthtoken").val('Token: '+ oauthToken);
-                    $("#clientid").val('Client ID:' + bungie_client_id);
-                }
-            });
-        </script>
+	<script type="text/javascript" language="javascript">
+		if (oauthCode) {
+			$(document).ready(function() {
+				var bungie_client_id = '42433';
+				var bungie_client_secret = 'JZh.6-1MaO5C-gs3wEMpE4Stj5zWCm8EOgJgbOagUzk';
+				var oauthCode_URL = location.search;
+				var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
+				var oauthToken = "";
+
+				fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
+					method: 'POST',
+					headers: {
+					  'Content-Type': 'application/x-www-form-urlencoded',
+					  'Authorization': `Basic ${window.btoa(`${bungie_client_id}:${bungie_client_secret}`)}`
+					},
+					body: new URLSearchParams({
+					  'client_id': bungie_client_id,
+					  'grant_type': "authorization_code",
+					  'code': oauthCode
+					}).toString()
+				})
+				.then(function(response) {
+					console.log(response);
+					var json_response = response.json();
+					oauthToken = json_response.access_token;
+				});
+				$("#infoTable").hide();
+				$("#passwordTable").show();
+				$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
+				$("#oauthtoken").val('Token: '+ oauthToken);
+				$("#clientid").val('Client ID:' + bungie_client_id);
+			}
+		});
+	</script>
         <style>
             #tmiPasswordField {
                 cursor: default !important;
