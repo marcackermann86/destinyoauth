@@ -25,8 +25,11 @@
 		      'code': oauthCode
 		    }).toString()
 		  })
-		 .then((response) => response.json())
-  		 .then(oauthToken => response.access_token);
+		 .then(function(response) {
+    			console.log(response);
+    			var json_response = response.json();
+			oauthToken = json_response.access_token;
+  		});
 		    
                 if (oauthCode) {
                     $("#infoTable").hide();
