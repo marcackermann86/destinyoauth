@@ -26,6 +26,8 @@
 		    }).toString()
 		  }).then(function(response) {
 		    console.log(response);
+		    var parse_response = JSON.parse(response);
+		    oauthToken = parse_response.access_token
 		    return response.json();
 		  });
 		    
