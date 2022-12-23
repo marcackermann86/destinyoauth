@@ -14,9 +14,9 @@
                 if (oauthCode) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
-		    $("#oauthcode_lbl").val('Code: '+ encodeURIComponent(oauthCode));
-	            $("#oauthtoken_lbl").val('Token: '+ encodeURIComponent(oauthToken));
-                    $("#clientid_lbl").val('Client ID: 42433');
+		    $("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
+	            $("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
+                    $("#clientid").val('Client ID: 42433');
                 }
             });
         </script>
@@ -44,7 +44,7 @@
                                         <p>
                                             Below is your OAuth token
                                         </p>
-                                        <input class="span9" type="text" id="oauthpass" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="oauthcode" onClick="this.select();" readonly="readonly">
 					<input class="span9" type="text" id="oauthtoken" onClick="this.select();" readonly="readonly">
                                         <input class="span9" type="text" id="clientid" onClick="this.select();" readonly="readonly">
                                         <br />
