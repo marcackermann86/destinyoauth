@@ -38,11 +38,11 @@
   				.then((data) => {
 					console.log(data);
 					oauthToken = data.access_token;
+					console.log(oauthToken);
+					$("#oauthtoken").val('Token: '+ oauthToken);
 				});
 			});
-		
-			$("#oauthtoken").val('Token: '+ oauthToken);
-			
+
 		};
 		
 	</script>
@@ -70,9 +70,9 @@
                                         <p>
                                             Below is your OAuth token
                                         </p>
-                                        <input class="span9" type="text" id="oauthcode" onClick="this.select();" readonly="readonly">
-					<input class="span9" type="text" id="oauthtoken" onClick="this.select();" readonly="readonly">
-                                        <input class="span9" type="text" id="clientid" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="#oauthcode" onClick="this.select();" readonly="readonly">
+					<input class="span9" type="text" id="#oauthtoken" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="#clientid" onClick="this.select();" readonly="readonly">
                                         <br />
                                         <br />
                                     </div>
