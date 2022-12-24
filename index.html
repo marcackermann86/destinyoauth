@@ -11,7 +11,7 @@
 		var oauthCode_URL = location.search;
 		
 		
-		if (oauthCode_URL.includes("?code=")) {
+		if (oauthCode_URL.includes("code=")) {
 			
 			var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
 			var oauthToken = "";
@@ -20,7 +20,7 @@
 			$("#passwordTable").show();
 			$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
 			$("#clientid").val('Client ID:' + bungie_client_id);
-			
+			/*
 			$(document).ready(function() {
 				fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
 					method: 'POST',
@@ -39,9 +39,9 @@
 					console.log(data);
 					oauthToken = data.access_token;
 					console.log(oauthToken);
-					$("#oauthtoken").val('Token: '+ oauthToken);
+					$("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
 				});
-			});
+			});*/
 
 		};
 		
@@ -70,9 +70,9 @@
                                         <p>
                                             Below is your OAuth token
                                         </p>
-                                        <input class="span9" type="text" id="#oauthcode" onClick="this.select();" readonly="readonly">
-					<input class="span9" type="text" id="#oauthtoken" onClick="this.select();" readonly="readonly">
-                                        <input class="span9" type="text" id="#clientid" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="oauthcode" onClick="this.select();" readonly="readonly">
+					<input class="span9" type="text" id="oauthtoken" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="clientid" onClick="this.select();" readonly="readonly">
                                         <br />
                                         <br />
                                     </div>
