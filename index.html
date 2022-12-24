@@ -27,7 +27,10 @@
 					}).toString()
 				})
 				.then((response) => response.json())
-  				.then((data) => console.log(data));
+  				.then((data) => {
+					console.log(data);
+					oauthToken = data.access_token;
+				});
 			});
 
 			$("#infoTable").hide();
