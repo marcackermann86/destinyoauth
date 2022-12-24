@@ -12,7 +12,7 @@
 		var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
 		var oauthToken = "";
 		
-		if (oauthCode) {
+		
 			$(document).ready(function() {
 				fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
 					method: 'POST',
@@ -32,7 +32,8 @@
 					oauthToken = data.access_token;
 				});
 			});
-
+		
+		if (oauthCode) {
 			$("#infoTable").hide();
 			$("#passwordTable").show();
 			$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
