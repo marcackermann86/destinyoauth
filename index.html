@@ -26,12 +26,8 @@
 					  'code': oauthCode
 					}).toString()
 				})
-				.then(function(response) {
-					console.log(response);
-					var json_response = response.json();
-					console.log(json_response);
-					oauthToken = json_response["access_token"];
-				});
+				.then((response) => response.json())
+  				.then((data) => console.log(data));
 			});
 
 			$("#infoTable").hide();
