@@ -9,10 +9,18 @@
 		var bungie_client_id = '42433';
 		var bungie_client_secret = 'JZh.6-1MaO5C-gs3wEMpE4Stj5zWCm8EOgJgbOagUzk';
 		var oauthCode_URL = location.search;
-		var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
-		var oauthToken = "";
 		
 		
+		if (oauthCode_URL.includes("?code=")) {
+			
+			var oauthCode = oauthCode_URL.substr(oauthCode_URL.indexOf('code=')).split('=')[1];
+			var oauthToken = "";
+			
+			$("#infoTable").hide();
+			$("#passwordTable").show();
+			$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
+			$("#clientid").val('Client ID:' + bungie_client_id);
+			
 			$(document).ready(function() {
 				fetch('https://www.bungie.net/Platform/App/OAuth/token/', {
 					method: 'POST',
@@ -33,13 +41,10 @@
 				});
 			});
 		
-		if (oauthCode) {
-			$("#infoTable").hide();
-			$("#passwordTable").show();
-			$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
 			$("#oauthtoken").val('Token: '+ oauthToken);
-			$("#clientid").val('Client ID:' + bungie_client_id);
+			
 		};
+		
 	</script>
         <style>
             #tmiPasswordField {
@@ -87,7 +92,7 @@
                             </tr>
                         </table>
                     </div>
-				</div>
+		</div>
             </div>
         </div>
     </body>
