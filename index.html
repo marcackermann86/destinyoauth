@@ -6,6 +6,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" language="javascript">
+		var bungie_api_key = '17656c49bb4d4253ad3a0e57c92d7abd';
 		var bungie_client_id = '42433';
 		var bungie_client_secret = 'JZh.6-1MaO5C-gs3wEMpE4Stj5zWCm8EOgJgbOagUzk';
 		var oauthCode_URL = location.search;
@@ -31,12 +32,28 @@
 					oauthToken = data.access_token;
 					$("#infoTable").hide();
 					$("#passwordTable").show();
+					$("#charInfoBtn").show();
 					$("#oauthcode").val('Code: '+ encodeURIComponent(oauthCode));
 					$("#clientid").val('Client ID:' + bungie_client_id);
 					$("#oauthtoken").val('Token: '+ encodeURIComponent(oauthToken));
 				});
 			}
 		});
+		
+		function getCharacterInfo() {
+  			fetch('https://www.bungie.net/Platform/User/GetCurrentBungieNetUser/', {
+				method: 'GET',
+				headers: {
+				'x-api-key': bungie_api_key,
+				'Authorization': `Bearer ${oauthToken}`
+				}
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+			});
+		}
+		
 	</script>
         <style>
             #tmiPasswordField {
@@ -71,6 +88,7 @@
                                 </td>
                             </tr>
                         </table>
+			<button class="btn btn-large btn-primary" id="charInfoBtn" onclick="getCharacterInfo()" style="display:none;">Get Charater Info</button>
                         <table class="table table-bordered table-striped" id="infoTable">
                             <tr>
                                 <th>Destiny 2 OAuth Generator</th>
